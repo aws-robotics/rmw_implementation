@@ -29,6 +29,7 @@
 #include "Poco/SharedLibrary.h"
 
 #include "rmw/error_handling.h"
+#include "rmw/event.h"
 #include "rmw/names_and_types.h"
 #include "rmw/get_node_info_and_types.h"
 #include "rmw/get_service_names_and_types.h"
@@ -356,23 +357,15 @@ RMW_INTERFACE_FN(rmw_send_response,
   rmw_ret_t, RMW_RET_ERROR,
   3, ARG_TYPES(const rmw_service_t *, rmw_request_id_t *, void *))
 
-RMW_INTERFACE_FN(rmw_create_publisher_event,
-  rmw_event_t *, nullptr,
-  2, ARG_TYPES(const rmw_publisher_t *, const rmw_event_type_t))
+RMW_INTERFACE_FN(rmw_publisher_event_init,
+  rmw_ret_t, RMW_RET_ERROR,
+  3, ARG_TYPES(rmw_event_t *, const rmw_publisher_t *, const rmw_event_type_t))
 
-RMW_INTERFACE_FN(rmw_create_subscription_event,
-  rmw_event_t *, nullptr,
-  2, ARG_TYPES(const rmw_subscription_t *, const rmw_event_type_t))
+RMW_INTERFACE_FN(rmw_subscription_event_init,
+  rmw_ret_t, RMW_RET_ERROR,
+  3, ARG_TYPES(rmw_event_t *, const rmw_subscription_t *, const rmw_event_type_t))
 
-RMW_INTERFACE_FN(rmw_create_service_event,
-  rmw_event_t *, nullptr,
-  1, ARG_TYPES(const rmw_service_t *))
-
-RMW_INTERFACE_FN(rmw_create_client_event,
-  rmw_event_t *, nullptr,
-  1, ARG_TYPES(const rmw_client_t *))
-
-RMW_INTERFACE_FN(rmw_destroy_event,
+RMW_INTERFACE_FN(rmw_event_fini,
   rmw_ret_t, RMW_RET_ERROR,
   1, ARG_TYPES(rmw_event_t *))
 
@@ -502,11 +495,9 @@ void prefetch_symbols(void)
   GET_SYMBOL(rmw_destroy_service)
   GET_SYMBOL(rmw_take_request)
   GET_SYMBOL(rmw_send_response)
-  GET_SYMBOL(rmw_create_publisher_event)
-  GET_SYMBOL(rmw_create_subscription_event)
-  GET_SYMBOL(rmw_create_service_event)
-  GET_SYMBOL(rmw_create_client_event)
-  GET_SYMBOL(rmw_destroy_event)
+  GET_SYMBOL(rmw_publisher_event_init)
+  GET_SYMBOL(rmw_subscription_event_init)
+  GET_SYMBOL(rmw_event_fini)
   GET_SYMBOL(rmw_take_event)
   GET_SYMBOL(rmw_create_guard_condition)
   GET_SYMBOL(rmw_destroy_guard_condition)
