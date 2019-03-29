@@ -357,18 +357,6 @@ RMW_INTERFACE_FN(rmw_send_response,
   rmw_ret_t, RMW_RET_ERROR,
   3, ARG_TYPES(const rmw_service_t *, rmw_request_id_t *, void *))
 
-RMW_INTERFACE_FN(rmw_publisher_event_init,
-  rmw_ret_t, RMW_RET_ERROR,
-  3, ARG_TYPES(rmw_event_t *, const rmw_publisher_t *, const rmw_event_type_t))
-
-RMW_INTERFACE_FN(rmw_subscription_event_init,
-  rmw_ret_t, RMW_RET_ERROR,
-  3, ARG_TYPES(rmw_event_t *, const rmw_subscription_t *, const rmw_event_type_t))
-
-RMW_INTERFACE_FN(rmw_event_fini,
-  rmw_ret_t, RMW_RET_ERROR,
-  1, ARG_TYPES(rmw_event_t *))
-
 RMW_INTERFACE_FN(rmw_take_event,
   rmw_ret_t, RMW_RET_ERROR,
   3, ARG_TYPES(const rmw_event_t *, void *, bool *))
@@ -495,9 +483,6 @@ void prefetch_symbols(void)
   GET_SYMBOL(rmw_destroy_service)
   GET_SYMBOL(rmw_take_request)
   GET_SYMBOL(rmw_send_response)
-  GET_SYMBOL(rmw_publisher_event_init)
-  GET_SYMBOL(rmw_subscription_event_init)
-  GET_SYMBOL(rmw_event_fini)
   GET_SYMBOL(rmw_take_event)
   GET_SYMBOL(rmw_create_guard_condition)
   GET_SYMBOL(rmw_destroy_guard_condition)
