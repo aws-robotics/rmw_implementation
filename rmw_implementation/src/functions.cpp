@@ -256,6 +256,10 @@ RMW_INTERFACE_FN(rmw_destroy_node,
   rmw_ret_t, RMW_RET_ERROR,
   1, ARG_TYPES(rmw_node_t *))
 
+RMW_INTERFACE_FN(rmw_node_assert_liveliness,
+  rmw_ret_t, RMW_RET_ERROR,
+  1, ARG_TYPES(const rmw_node_t *))
+
 RMW_INTERFACE_FN(rmw_node_get_graph_guard_condition,
   const rmw_guard_condition_t *, nullptr,
   1, ARG_TYPES(const rmw_node_t *))
@@ -281,6 +285,10 @@ RMW_INTERFACE_FN(rmw_publisher_count_matched_subscriptions,
 RMW_INTERFACE_FN(rmw_publish_serialized_message,
   rmw_ret_t, RMW_RET_ERROR,
   2, ARG_TYPES(const rmw_publisher_t *, const rmw_serialized_message_t *))
+
+RMW_INTERFACE_FN(rmw_publisher_assert_liveliness,
+  rmw_ret_t, RMW_RET_ERROR,
+  1, ARG_TYPES(const rmw_publisher_t *))
 
 RMW_INTERFACE_FN(rmw_serialize,
   rmw_ret_t, RMW_RET_ERROR,
@@ -460,12 +468,14 @@ void prefetch_symbols(void)
   GET_SYMBOL(rmw_get_serialization_format)
   GET_SYMBOL(rmw_create_node)
   GET_SYMBOL(rmw_destroy_node)
+  GET_SYMBOL(rmw_node_assert_liveliness)
   GET_SYMBOL(rmw_node_get_graph_guard_condition)
   GET_SYMBOL(rmw_create_publisher)
   GET_SYMBOL(rmw_destroy_publisher)
   GET_SYMBOL(rmw_publish)
-  GET_SYMBOL(rmw_publisher_count_matched_subscriptions);
+  GET_SYMBOL(rmw_publisher_count_matched_subscriptions)
   GET_SYMBOL(rmw_publish_serialized_message)
+  GET_SYMBOL(rmw_publisher_assert_liveliness)
   GET_SYMBOL(rmw_serialize)
   GET_SYMBOL(rmw_deserialize)
   GET_SYMBOL(rmw_create_subscription)
